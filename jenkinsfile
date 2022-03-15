@@ -20,8 +20,7 @@ pipeline {
                     submoduleCfg: [], 
                     userRemoteConfigs: [[
                         credentialsId: 'GitHub_edisonmolinaho', 
-                        url:'https://github.com/Edisonmolinah/frontCobroPeaje.git
-'
+                        url:'https://github.com/Edisonmolinah/frontCobroPeaje.git'
                     ]]
                 ])
             }
