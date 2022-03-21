@@ -18,4 +18,6 @@ export class ListarProductoComponent implements OnInit {
     this.listaProductos = this.productoService.consultar();
   }
 
+  
+
 }

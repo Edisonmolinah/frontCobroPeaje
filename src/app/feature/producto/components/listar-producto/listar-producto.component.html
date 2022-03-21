@@ -1,8 +1,61 @@
-<p>listar-producto works!</p>
-<div id="productos">
-  <ul class="productos">
-    <li *ngFor="let item of listaProductos | async">
-      <span>{{item.id}}</span> {{item.descripcion}}
-    </li>
-  </ul>
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+          <div class="card">
+              <div class="card-body text-center">
+                  <span class="titulo">CREAR PRODUCTO</span>
+                  <form [formGroup]="pagoForm" (ngSubmit)="calcularPago()">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <label>Placa:</label>
+                      </div>
+                      <div class="col-sm-4">
+                        <input validar type="text" id="idPago" name="idPago" placeholder="Placa del vehiculo" class="form-control"
+                          formControlName="Placa">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <label>Tipo de vehiculo:</label>
+                      </div>
+                      <div class="col-sm-4">
+                        <div>
+                          <input type="radio" id="tipo1" name="drone" value="1"
+                          (change)="radioChangeHandler($event)" checked>
+                          <label for="huey">1. Familiar</label>
+                        </div>
+                        
+                        <div>
+                          <input type="radio" id="tipo2" name="drone" value="2" 
+                                  (change)="radioChangeHandler($event)">
+                          <label for="dewey">2. Camion liviano</label>
+                        </div>
+                        
+                        <div>
+                          <input type="radio" id="tipo3" name="drone" value="3"
+                          (change)="radioChangeHandler($event)">
+                          <label for="louie">3. Camion Pesado</label>
+                        </div>
+                      </div>
+                    
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <label>Valor a Pagar:</label>
+                      </div>
+                      <div class="col-sm-4">
+                        <input validar type="number" id="idValorPago" name="idValorPago" placeholder="Valor a pagar" class="form-control"
+                          formControlName="valorPago">
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <button type="button" class="btn btn-success btn-lg float-middle">Producto</button>
+                    </div>
+                  
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

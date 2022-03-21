@@ -9,7 +9,7 @@ var HtmlReporter = require('protractor-beautiful-reporter');
  * @type { import("protractor").Config }
  */
 exports.config = {
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 40000,
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
@@ -29,9 +29,7 @@ exports.config = {
       project: require('path').join(__dirname, './tsconfig.json')
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
-    jasmine.getEnv().addReporter(new HtmlReporter({
-      baseDirectory: 'tmp/screenshots'
-   }).getJasmine2Reporter());
+   
     
   }
 };

@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+          <div class="card">
+              <div class="card-body text-center">
+                <form [formGroup]="listaForm" (ngSubmit)="listarPagos()">
+                  <span class="titulo" >LISTADO DE PAGOS</span>
+                  <button (click)= "listarPagos()" class=" btn btn-success float-end">Listar</button>
+                  <input type="date" id="fechaPago" formControlName="fechaPago" style="margin-left: 30px; margin-top: 10px;"/>
+                  <table class="table table-striped mt-3" id="tablaPagos" name="tablaPagos">
+                      <thead>
+                        <tr>
+                          <th scope="col">Placa</th>
+                          <th scope="col">TipoVehiculo</th>
+                          <th scope="col">ValorPago</th>
+                          <th scope="col">Fecha</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let listaPago of listaPago">
+                          <td>{{ listaPago.placa }}</td>
+                          <td>{{ listaPago.tipoVehiculo }}</td>
+                          <td>{{ listaPago.valorPago }}</td>
+                          <td>{{ listaPago.fechaPago }}</td>                          
+                        </tr>
+                        <hr>
+
+                        <tr>
+                          <td></td>
+                          <td>Total:</td>
+                          <td id="sumaPagos"></td>
+                          <td></td>                          
+                        </tr>
+
+                        
+                      </tbody>  
+                  </table>
+                  <h5 style="text-align: center; margin-top: 10px;" >Lista de Pagos</h5>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

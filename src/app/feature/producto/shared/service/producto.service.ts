@@ -14,7 +14,7 @@ export class ProductoService {
   }
 
   public guardar(producto: Producto) {
-    return this.http.doPost<Producto, boolean>(`${environment.endpoint}/productos`, producto,
+    return this.http.doPostP<Producto, boolean>(`${environment.endpoint}/productos`, producto,
                                                 this.http.optsName('crear/actualizar productos'));
   }
 
