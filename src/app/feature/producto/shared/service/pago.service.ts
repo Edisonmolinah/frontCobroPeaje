@@ -30,5 +30,5 @@ export class PagoService {
                                                 this.http.optsName('listar'));
   } 
 
-  
+
 }

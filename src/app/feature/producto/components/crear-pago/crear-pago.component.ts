@@ -29,23 +29,16 @@ export class CrearPagoComponent implements OnInit {
   
   calcularPago() {
     
-    this.pagoServices.calcularPago(this.pagoForm.value)
+     
+      console.log(this.pagoForm.value)
+      this.pagoServices.calcularPago(this.pagoForm.value)
       .subscribe(data => {
         this.pago = data;
         this.pagoForm.get('valorAPagar').setValue(data['valorAPagar']);
-        
-        console.log("data: " + JSON.stringify(data));
+
       })
 
-    const CALCULARPAGO: Pago = {
-      placa: this.pagoForm.get('placa').value,
-      tipoVehiculo: this.pagoForm.get('tipoVehiculo').value,
-      valorPago: this.pagoForm.get('valorAPagar').value,
-          
-
-    }
-
-    console.log(CALCULARPAGO);
+    //console.log(CALCULARPAGO);
     console.log("mostrando el PagoForm: "+JSON.stringify(this.pagoForm));
 
   }

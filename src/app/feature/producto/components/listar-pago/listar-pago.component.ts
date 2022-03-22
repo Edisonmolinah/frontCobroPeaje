@@ -47,8 +47,8 @@ export class ListarPagoComponent implements OnInit {
     
       });   
   }
-
-  /*  sumaPagos(){
+/* 
+   sumaPagos(){
 
       const LISTAPAGO: ListaPago ={
         valorPago: this.listaForm.get('valorPago').value
@@ -56,9 +56,9 @@ export class ListarPagoComponent implements OnInit {
 
       console.log(LISTAPAGO);
       let suma = 0;  
-        for( let x=0; x< listaPago; x++)
+        for( let  x=0; x< listaPago.si; x++)
           suma += valoresSuma[x];
-        return suma;
+        return suma;*/
 
 
 
@@ -76,9 +76,9 @@ export class ListarPagoComponent implements OnInit {
     let suma = 0;  
     for( let x=0; x< valoresSuma.length; x++)
       suma += valoresSuma[x];
-    return suma; 
+    return suma; */
 
-  }  */
+  
 
 }
 

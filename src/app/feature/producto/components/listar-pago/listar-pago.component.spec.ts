@@ -40,9 +40,8 @@ describe('ListarPagoComponent', () => {
 
   /* /* it('should create', () => {
     expect(component).toBeTruthy();
-    component.listaPago.subscribe(resultado => {
-      expect(2).toBe(resultado.length); 
-  }); 
-}); */
+    /* component.listaPago.subscribe(resultado => {
+      expect(2).toBe(resultado.length); */ 
+   
+}); 
 
-});

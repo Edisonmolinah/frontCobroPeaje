@@ -43,9 +43,7 @@ describe('CrearProductoComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('formulario es invalido cuando esta vacio', () => {
-    expect(component.productoForm.valid).toBeFalsy();
-  });
+  
 
   it('Registrando producto', () => {
     expect(component.productoForm.valid).toBeFalsy();
