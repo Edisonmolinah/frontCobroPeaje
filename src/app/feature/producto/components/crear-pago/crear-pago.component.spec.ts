@@ -39,10 +39,6 @@ describe('CrearPagoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('formulario es invalido cuando esta vacio', () => {
     expect(component.pagoForm.value).toBeTruthy();
   });  
