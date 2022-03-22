@@ -46,8 +46,8 @@ pipeline {
                 echo '------------>Análisis de código estático<------------'
                 withSonarQubeEnv('Sonar') {
                         //sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-                        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:front.pago.peaje-edison.molina',
-                        sonarName:'CeibaADN-frontPagoPeaje(edison.molina)',
+                        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:edison.frontpagopeaje-edison.molina',
+                        sonarName:'CeibaADN-frontPagoPeaje-edison.molina',
                         sonarPathProperties:'./sonar-project.properties')
                     }
 
