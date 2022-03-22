@@ -3,34 +3,30 @@ pipeline {
         label 'Slave4_Induccion'
     }
 
+    options {
+    	buildDiscarder(logRotator(numToKeepStr: '3'))
+ 	disableConcurrentBuilds()
+    }
+
     tools {
         jdk 'JDK8_Centos'
     }
 
-    stages {
-        stage('Checkout'){
-            steps{
-                echo "------------>Checkout<------------"
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [], 
-                    gitTool: 'Default', 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [[
-                        credentialsId: 'GitHub_edisonmolinaho', 
-                        url:'https://github.com/Edisonmolinah/frontCobroPeaje.git'
-                    ]]
-                ])
-            }
-        }
+    stages{
+     stage('Checkout') {
+      steps{
+        echo "------------>Checkout<------------"
+		checkout scm
+      }
+    }
 
-        stage('Install') {
-            steps {
-                sh 'npm install'
-            }
+        stage('NPM Install') {
+      steps {
+        withEnv(['NPM_CONFIG_LOGLEVEL=warn']) {
+          sh 'npm install'
         }
+      }
+    }
 
         stage('Build') {
             steps {
@@ -38,21 +34,25 @@ pipeline {
             }
         }
 
-        stage('Tests') {
+        stage('Tests Unit') {
             steps {
                 sh 'npm run test -- --watch=false --browsers ChromeHeadless'
             }
         }
 
 
-        stage('Sonar Scanner Coverage') {
+        stage('Static Code Analysis') {
             steps{
                 echo '------------>Análisis de código estático<------------'
                 withSonarQubeEnv('Sonar') {
-                    sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties" 
-                }
+                        //sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
+                        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:front.pago.peaje-edison.molina',
+                        sonarName:'CeibaADN-frontPagoPeaje(edison.molina)',
+                        sonarPathProperties:'./sonar-project.properties')
+                    }
+
             }
-        }
+    }
     }
 
     post{
