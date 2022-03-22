@@ -30,8 +30,5 @@ export class PagoService {
                                                 this.http.optsName('listar'));
   } 
 
-  /* public eliminar(Pago: Pago) {
-    return this.http.doDelete<boolean>(`${environment.endpoint}/productos/${producto.id}`,
-                                                 this.http.optsName('eliminar productos'));
-  } */
+  
 }

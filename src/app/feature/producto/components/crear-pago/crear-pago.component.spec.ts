@@ -43,9 +43,9 @@ describe('CrearPagoComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('formulario es invalido cuando esta vacio', () => {
+  /* it('formulario es invalido cuando esta vacio', () => {
     expect(component.pagoForm.valid).toBeFalsy();
-  });
+  }); */
 
   it('Registrando pago', () => {
     expect(component.pagoForm.valid).toBeFalsy();
