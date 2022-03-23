@@ -41,17 +41,14 @@ describe('CrearPagoComponent', () => {
 
   it('formulario es invalido cuando esta vacio', () => {
     expect(component.pagoForm.value).toBeTruthy();
-  });  
+  });
 
   it('Registrando pago', () => {
     expect(component.pagoForm.valid).toBeFalsy();
     component.pagoForm.controls.placa.setValue('asd123');
     component.pagoForm.controls.tipoVehiculo.setValue(1);
-    
     expect(component.pagoForm.valid).toBeTruthy();
-
     component.guardarPago();
-
     // Aca validamos el resultado esperado al enviar la petición
     // TODO adicionar expect
   });

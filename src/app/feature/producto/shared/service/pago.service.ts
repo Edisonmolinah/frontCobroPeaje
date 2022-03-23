@@ -20,15 +20,12 @@ export class PagoService {
   }
 
   public guardarPago(pago: Pago) {
-    return this.http.doPost<Pago>(`http://localhost:8081/cobroPeaje/pago`,pago,
+    return this.http.doPost<Pago>(`http://localhost:8081/cobroPeaje/pago`, pago,
                                                 this.http.optsName('crear'));
-  } 
+  }
 
   public listarPagos(listaPago: ListaPago) {
-    console.log(listaPago)
-    return this.http.doGet<ListaPago>(`http://localhost:8081/cobroPeaje/pagos/${listaPago.fechaPago}`,
+    return this.http.doGet<ListaPago[]>(`http://localhost:8081/cobroPeaje/pagos/${listaPago.fechaPago}`,
                                                 this.http.optsName('listar'));
-  } 
-
-
+  }
 }

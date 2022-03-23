@@ -5,7 +5,7 @@
               <div class="card-body text-center">
                 <form [formGroup]="listaForm" (ngSubmit)="listarPagos()">
                   <span class="titulo" >LISTADO DE PAGOS</span>
-                  <button (click)= "listarPagos()" class=" btn btn-success float-end">Listar</button>
+                  <button type="submit" class=" btn btn-success float-end">Listar</button>
                   <input type="date" id="fechaPago" formControlName="fechaPago" style="margin-left: 30px; margin-top: 10px;"/>
                   <table class="table table-striped mt-3" id="tablaPagos" name="tablaPagos">
                       <thead>
@@ -28,12 +28,11 @@
 
                         <tr>
                           <td></td>
-                          <td>Total:</td>
-                          <td id="sumaPagos"></td>
+                          <td>Total Pagos:</td>
+                          <td><input type="box" name="sumaPagos" id="sumaPagos" class="form-control form-control text-center"
+                            formControlName="sumaPagos" readonly></td>
                           <td></td>                          
-                        </tr>
-
-                        
+                        </tr>                     
                       </tbody>  
                   </table>
                   <h5 style="text-align: center; margin-top: 10px;" >Lista de Pagos</h5>

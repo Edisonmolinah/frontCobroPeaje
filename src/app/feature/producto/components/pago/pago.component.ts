@@ -8,12 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagoComponent implements OnInit {
 
-  constructor() {
-
-    
-   }
+  constructor() {}
 
   ngOnInit() {
   }
-
 }

@@ -5,10 +5,9 @@ import { HomeComponent } from '@home/home.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [SecurityGuard]  },
-  { path: 'producto', loadChildren: () => import('@producto/pago.module').then(mod => mod.PagoModule) }
-  
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent, canActivate: [SecurityGuard]},
+  { path: 'producto', loadChildren: () => import('@producto/pago.module').then(mod => mod.PagoModule)}
 ];
 
 @NgModule({

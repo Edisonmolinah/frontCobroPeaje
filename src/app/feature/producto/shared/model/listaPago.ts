@@ -3,5 +3,4 @@ export class ListaPago {
     tipoVehiculo: number;
     valorPago: number;
     fechaPago: Date;
-    
 }

@@ -25,8 +25,7 @@ describe('CrearProductoComponent', () => {
         FormsModule
       ],
       providers: [ProductoService, HttpService],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -43,8 +42,6 @@ describe('CrearProductoComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
-
   it('Registrando producto', () => {
     expect(component.productoForm.valid).toBeFalsy();
     component.productoForm.controls.id.setValue('001');
@@ -52,7 +49,6 @@ describe('CrearProductoComponent', () => {
     expect(component.productoForm.valid).toBeTruthy();
 
     component.cerar();
-
     // Aca validamos el resultado esperado al enviar la petición
     // TODO adicionar expect
   });

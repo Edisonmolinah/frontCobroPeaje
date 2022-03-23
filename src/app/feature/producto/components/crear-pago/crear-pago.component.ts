@@ -3,7 +3,6 @@ import { PagoService } from '../../shared/service/pago.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Pago } from '@producto/shared/model/pago';
 
-
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 6;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 6;
 const VALOR_MINIMO_PERMITIDO_TIPO_VEHICULO = 1;
@@ -17,7 +16,6 @@ const VALOR_MAXIMO_PERMITIDO_TIPO_VEHICULO = 3;
 })
 export class CrearPagoComponent implements OnInit {
   pagoForm: FormGroup;
-
   pago: Pago = new Pago();
 
   constructor(protected pagoServices: PagoService) {
@@ -26,52 +24,36 @@ export class CrearPagoComponent implements OnInit {
   ngOnInit() {
     this.construirFormularioPago();
   }
-  
-  calcularPago() {
-    
-     
-      console.log(this.pagoForm.value)
-      this.pagoServices.calcularPago(this.pagoForm.value)
-      .subscribe(data => {
-        this.pago = data;
-        this.pagoForm.get('valorAPagar').setValue(data['valorAPagar']);
-
-      })
-
-    //console.log(CALCULARPAGO);
-    console.log("mostrando el PagoForm: "+JSON.stringify(this.pagoForm));
-
-  }
-  
 
   private construirFormularioPago() {
     this.pagoForm = new FormGroup({
       placa: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-                                  Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
+      Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
       tipoVehiculo: new FormControl('', [Validators.required, Validators.min(VALOR_MINIMO_PERMITIDO_TIPO_VEHICULO),
-                                         Validators.max(VALOR_MAXIMO_PERMITIDO_TIPO_VEHICULO)]),
-      valorAPagar: new FormControl('',[]) 
+      Validators.max(VALOR_MAXIMO_PERMITIDO_TIPO_VEHICULO)]),
+      valorAPagar: new FormControl('', [])
     });
   }
 
-  guardarPago() {
+  calcularPago() {
+    this.pagoServices.calcularPago(this.pagoForm.value)
+      .subscribe(data => {
+        this.pago = data;
+        this.pagoForm.get('valorAPagar').setValue(data['valorAPagar']);
+      });
+  }
 
+  guardarPago() {
     const PAGO: Pago = {
-      placa:this.pagoForm.get('placa').value,
-      tipoVehiculo:this.pagoForm.get('tipoVehiculo').value,
-      valorPago:this.pagoForm.get('valorAPagar').value,
-      
-    }
+      placa: this.pagoForm.get('placa').value,
+      tipoVehiculo: this.pagoForm.get('tipoVehiculo').value,
+      valorPago: this.pagoForm.get('valorAPagar').value,
+    };
 
     console.log(PAGO);
     this.pagoServices.guardarPago(PAGO)
-    .subscribe(data => {
-      this.pago = data;
-              
-    })
-
-      
-  }    
-}  
-
-
+      .subscribe(data => {
+        this.pago = data;
+      });
+  }
+}
