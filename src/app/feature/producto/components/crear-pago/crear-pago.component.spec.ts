@@ -40,7 +40,7 @@ describe('CrearPagoComponent', () => {
   });
 
   it('formulario es invalido cuando esta vacio', () => {
-    expect(component.pagoForm.valid).toBeFalsy();
+    expect(component.pagoForm.valid).toBeFalse();
   });
 
   it('Registrando pago', () => {
