@@ -38,10 +38,6 @@ describe('CrearProductoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('Registrando producto', () => {
     expect(component.productoForm.valid).toBeFalsy();
     component.productoForm.controls.id.setValue('001');
