@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Angular Seed');
+    expect(page.getText('app-root .par')).toEqual('home works............!');
   });
 
   afterEach(async () => {

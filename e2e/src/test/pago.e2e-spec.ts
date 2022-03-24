@@ -1,28 +1,28 @@
 //import { browser, logging } from 'protractor';
 import { NavbarPage } from '../page/navbar/navbar.po';
 import { AppPage } from '../app.po';
-import { ProductoPage } from '../page/producto/producto.po';
+import { PagoPage } from '../page/producto/pago.po';
 
-describe('workspace-project Producto', () => {
+describe('workspace-project Pago', () => {
     let page: AppPage;
     let navBar: NavbarPage;
-    let producto: ProductoPage;
+    let pago: PagoPage;
 
     beforeEach(() => {
         page = new AppPage();
         navBar = new NavbarPage();
-        producto = new ProductoPage();
+        pago = new PagoPage();
     });
 
     it('Deberia crear producto', () => {
-        const ID_PRODUCTO = '001';
-        const DESCRIPCION_PRODUCTO = 'Producto de pruebas';
+        const PLACA = 'asd123';
+        const IPO_VEHICULO = 1;
 
         page.navigateTo();
         navBar.clickBotonProductos();
-        producto.clickBotonCrearProductos();
-        producto.ingresarId(ID_PRODUCTO);
-        producto.ingresarDescripcion(DESCRIPCION_PRODUCTO);
+        pago.clickBotonCrearPago();
+        pago.ingresarPlaca(PLACA);
+        pago.ingresarTipoVehiculo(IPO_VEHICULO);
 
         // Adicionamos las validaciones despues de la creación
         // expect(<>).toEqual(<>);
@@ -31,8 +31,8 @@ describe('workspace-project Producto', () => {
     it('Deberia listar productos', () => {
         page.navigateTo();
         navBar.clickBotonProductos();
-        producto.clickBotonListarProductos();
+        pago.clickBotonListarProductos();
 
-        expect(4).toBe(producto.contarProductos());
+        expect(4).toBe(pago.contarProductos());
     });
 });

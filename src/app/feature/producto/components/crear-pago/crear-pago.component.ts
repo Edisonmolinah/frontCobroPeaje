@@ -56,5 +56,6 @@ export class CrearPagoComponent implements OnInit {
       .subscribe(data => {
         this.pago = data;
       });
+      //this.router.navigate(['/producto/actualizar']);
   }
 }
