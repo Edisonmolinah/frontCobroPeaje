@@ -42,9 +42,9 @@ describe('PagoService', () => {
   });
 
   it('deberia crear un pago', () => {
-    const dummyProducto = new Pago('asd123', 3, 18000);
-    service.guardarPago(dummyProducto).subscribe((respuesta) => {
-      expect(respuesta);
+    const dummyPago = new Pago('asd123', 3, 18000);
+    service.guardarPago(dummyPago).subscribe((respuesta) => {
+      expect(respuesta).toEqual(respuesta);
     });
     const req = httpMock.expectOne(apiEndpointcrearPago);
     expect(req.request.method).toBe('POST');

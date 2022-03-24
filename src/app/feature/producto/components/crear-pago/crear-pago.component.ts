@@ -3,6 +3,7 @@ import { PagoService } from '../../shared/service/pago.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Pago } from '@producto/shared/model/pago';
 
+
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 6;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 6;
 const VALOR_MINIMO_PERMITIDO_TIPO_VEHICULO = 1;
@@ -13,6 +14,7 @@ const VALOR_MAXIMO_PERMITIDO_TIPO_VEHICULO = 3;
   templateUrl: './crear-pago.component.html',
   styleUrls: ['./crear-pago.component.css']
 })
+
 export class CrearPagoComponent implements OnInit {
   pagoForm: FormGroup;
   pago: Pago = new Pago();
