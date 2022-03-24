@@ -8,7 +8,6 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 6;
 const VALOR_MINIMO_PERMITIDO_TIPO_VEHICULO = 1;
 const VALOR_MAXIMO_PERMITIDO_TIPO_VEHICULO = 3;
 
-
 @Component({
   selector: 'app-crear-pago',
   templateUrl: './crear-pago.component.html',
