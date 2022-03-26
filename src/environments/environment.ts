@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  endpoint: '/cobroPeaje'
+  endpoint: 'localhost:8081/cobroPeaje'
 };
 
 /*

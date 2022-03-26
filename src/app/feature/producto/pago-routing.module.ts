@@ -18,6 +18,10 @@ const routes: Routes = [
         component: ListarPagoComponent
       },
       {
+        path: 'actualizar/:id',
+        component: CrearPagoComponent
+      },
+      {
         path: '**',
         redirectTo: '', pathMatch: 'full'
       },

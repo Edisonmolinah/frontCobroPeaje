@@ -8,7 +8,7 @@ import { ListaPago } from '../model/listaPago';
 @Injectable()
 export class PagoService {
 
-  constructor(protected http: HttpService) {}
+  constructor(protected http: HttpService) { }
 
   public consultar() {
     return this.http.doGet<Pago[]>(`${environment.endpoint}/pagos`, this.http.optsName('consultar pagos'));
@@ -16,16 +16,21 @@ export class PagoService {
 
   public calcularPago(pago: Pago) {
     return this.http.doGet<Pago>(`http://localhost:8081/cobroPeaje/pago/calcular_pago/${pago.tipoVehiculo}`,
-                                                this.http.optsName('crear'));
+      this.http.optsName('crear'));
   }
 
   public guardarPago(pago: Pago) {
     return this.http.doPost<Pago>(`http://localhost:8081/cobroPeaje/pago`, pago,
-                                                this.http.optsName('crear'));
+      this.http.optsName('crear'));
   }
 
   public listarPagos(listaPago: ListaPago) {
     return this.http.doGet<ListaPago[]>(`http://localhost:8081/cobroPeaje/pagos/${listaPago.fechaPago}`,
-                                                this.http.optsName('listar'));
+      this.http.optsName('listar'));
+  }
+
+  public modificarPago(id: string, pago: Pago) {
+    return this.http.doPut<Pago>(`http://localhost:8081/cobroPeaje/pago/${id}`, pago,
+      this.http.optsName('modificarPago'));
   }
 }

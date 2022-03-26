@@ -13,7 +13,7 @@ export class ListarPagoComponent implements OnInit {
 
   listaForm: FormGroup;
   listaPago: ListaPago[];
-  sumaPagos = 0;
+  suma = 0;
   constructor(protected pagoService: PagoService) { }
 
   ngOnInit() {
@@ -24,10 +24,7 @@ export class ListarPagoComponent implements OnInit {
     this.pagoService.listarPagos(this.listaForm.value)
       .subscribe(data => {
         this.listaPago = data;
-        for (let i = 0; i < this.listaPago.length; i++) {
-          this.sumaPagos += this.listaPago[i].valorPago;
-        }
-        this.listaForm.get('sumaPagos').setValue(this.sumaPagos);
+        this.sumaPagos();
       });
   }
 
@@ -39,5 +36,12 @@ export class ListarPagoComponent implements OnInit {
       fechaPago: new FormControl('', [Validators.required]),
       sumaPagos: new FormControl(''),
     });
+  }
+
+  sumaPagos() {
+    for (let i = 0; i < this.listaPago.length; i++) {
+      this.suma += this.listaPago[i].valorPago;
+    }
+    this.listaForm.get('sumaPagos').setValue(this.suma);
   }
 }
