@@ -43,7 +43,7 @@ describe('CrearPagoComponent', () => {
     expect(component.pagoForm.valid).toBeFalsy();
     component.pagoForm.controls.placa.setValue('asd123');
     component.pagoForm.controls.tipoVehiculo.setValue(2);
-    component.pagoForm.controls.valorAPagar.setValue(8000);
+    component.pagoForm.controls.valorPago.setValue(8000);
     expect(component.pagoForm.valid).toBeTruthy();
   });
 });
