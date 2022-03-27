@@ -1,5 +1,4 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
 
 import { CrearPagoComponent } from './crear-pago.component';
 import { CommonModule } from '@angular/common';
@@ -25,31 +24,26 @@ describe('CrearPagoComponent', () => {
         FormsModule
       ],
       providers: [PagoService, HttpService],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CrearPagoComponent);
     component = fixture.componentInstance;
     pagoService = TestBed.inject(PagoService);
-    spyOn(pagoService, 'calcularPago').and.returnValue(
-      of()
-    );
+    spyOn(pagoService, 'guardarPago');
     fixture.detectChanges();
   });
 
   it('formulario es invalido cuando esta vacio', () => {
-    expect(component.pagoForm.valid).toBeFalse();
+    expect(component.pagoForm.valid).toBeFalsy();
   });
 
-  it('Registrando pago', () => {
+  it('Validando el Registro de un pago', () => {
     expect(component.pagoForm.valid).toBeFalsy();
     component.pagoForm.controls.placa.setValue('asd123');
-    component.pagoForm.controls.tipoVehiculo.setValue(1);
+    component.pagoForm.controls.tipoVehiculo.setValue(2);
+    component.pagoForm.controls.valorAPagar.setValue(8000);
     expect(component.pagoForm.valid).toBeTruthy();
-    component.guardarPago();
-    // Aca validamos el resultado esperado al enviar la petición
-    // TODO adicionar expect
   });
 });

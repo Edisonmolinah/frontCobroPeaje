@@ -5,7 +5,7 @@ export class ListaPago {
     valorPago: number;
     fechaPago: Date;
 
-    constructor(id: string, placa: string, tipoVehiculo: number, valorPago: number, fechaPago: Date) {
+    constructor(id: string, placa: string, tipoVehiculo: number, valorPago: number, fechaPago?: Date) {
 
         this.id = id;
         this.placa = placa;

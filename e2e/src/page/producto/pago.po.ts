@@ -9,7 +9,7 @@ export class PagoPage {
     private inputPlaca = element(by.id('placa'));
     private inputTipoVehiculo = element(by.id('tipoVehiculo'));
     private inputValorPago = element(by.id('valorAPagar'));
-    private inputFechaPago = element(by.id('fechaPago'))
+    private inputFechaPago = element(by.id('fechaPago'));
     private listaPagos = element.all(by.css('ul.pagos li'));
 
     async clickBotonCrearPago() {
@@ -46,10 +46,6 @@ export class PagoPage {
     }
 
     async contarPagos() {
-        return this.listaPagos.count();
-    }
-
-    getPlaca(){
-        return element(by.css('#placa')).getText() as Promise<string>
+        await this.listaPagos.length;
     }
 }

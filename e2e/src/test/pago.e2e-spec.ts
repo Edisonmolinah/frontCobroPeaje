@@ -1,4 +1,3 @@
-//import { browser, logging } from 'protractor';
 import { NavbarPage } from '../page/navbar/navbar.po';
 import { AppPage } from '../app.po';
 import { PagoPage } from '../page/producto/pago.po';
@@ -17,7 +16,7 @@ describe('workspace-project Pago', () => {
     it('Deberia ingresar a crear pago', () => {
         page.navigateTo();
         navBar.clickBotonProductos();
-        pago.clickBotonCrearPago();      
+        pago.clickBotonCrearPago();
     });
 
     it('Deberia dar click en calcular pago cuando tenga Placa y TipoVehiculo', () => {
@@ -36,7 +35,7 @@ describe('workspace-project Pago', () => {
         const PLACA = 'asd123';
         const TIPO_VEHICULO = 1;
         const VALOR_PAGO = 8000;
-        
+
         page.navigateTo();
         navBar.clickBotonProductos();
         pago.clickBotonCrearPago();
@@ -47,8 +46,5 @@ describe('workspace-project Pago', () => {
         expect(TIPO_VEHICULO).toEqual(1);
         expect(VALOR_PAGO).toEqual(8000);
         pago.clickBotonPagar();
-        
-        //Adicionamos las validaciones despues de la creación
-        //expect().toEqual();
-    });   
+    });
 });

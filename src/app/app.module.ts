@@ -8,13 +8,11 @@ import { PagoModule } from '@producto/pago.module';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
-//import { ActualizarPagoComponent } from './feature/producto/components/actualizar-pago/actualizar-pago.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent
-    //ActualizarPagoComponent
   ],
   imports: [
     BrowserModule,

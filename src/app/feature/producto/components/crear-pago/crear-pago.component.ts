@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PagoService } from '../../shared/service/pago.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Pago } from '@producto/shared/model/pago';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -10,6 +10,9 @@ const LONGITUD_MINIMA_PERMITIDA_TEXTO = 6;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 6;
 const VALOR_MINIMO_PERMITIDO_TIPO_VEHICULO = 1;
 const VALOR_MAXIMO_PERMITIDO_TIPO_VEHICULO = 3;
+const VALOR_FORMULARIO_VALOR_PAGO = 'valorPago';
+const VALOR_ASIGNACION_VALOR_PAGO = 'valorAPagar';
+
 
 @Component({
   selector: 'app-crear-pago',
@@ -22,9 +25,7 @@ export class CrearPagoComponent implements OnInit {
   pago: Pago = new Pago();
   titulo = 'Crear Pago';
   id: string | null;
-  constructor(protected pagoServices: PagoService,
-    private router: Router,
-    private aRouter: ActivatedRoute) {
+  constructor(protected pagoServices: PagoService, private router: Router, private aRouter: ActivatedRoute) {
     this.id = this.aRouter.snapshot.paramMap.get('id');
   }
 
@@ -39,7 +40,7 @@ export class CrearPagoComponent implements OnInit {
       Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
       tipoVehiculo: new FormControl('', [Validators.required, Validators.min(VALOR_MINIMO_PERMITIDO_TIPO_VEHICULO),
       Validators.max(VALOR_MAXIMO_PERMITIDO_TIPO_VEHICULO)]),
-      valorAPagar: new FormControl('', [Validators.required])
+      valorPago: new FormControl('', [Validators.required])
     });
   }
 
@@ -47,7 +48,7 @@ export class CrearPagoComponent implements OnInit {
     this.pagoServices.calcularPago(this.pagoForm.value)
       .subscribe(data => {
         this.pago = data;
-        this.pagoForm.get('valorAPagar').setValue(data['valorAPagar']);
+        this.pagoForm.get(VALOR_FORMULARIO_VALOR_PAGO).setValue(data[VALOR_ASIGNACION_VALOR_PAGO]);
       });
   }
 
@@ -62,28 +63,27 @@ export class CrearPagoComponent implements OnInit {
     const PAGO: Pago = {
       placa: this.pagoForm.get('placa').value,
       tipoVehiculo: this.pagoForm.get('tipoVehiculo').value,
-      valorPago: this.pagoForm.get('valorAPagar').value,
+      valorPago: this.pagoForm.get('valorPago').value,
     };
 
     if (this.id !== null) {
       const EDIT_PAGO: Pago = {
         placa: this.pagoForm.get('placa').value,
         tipoVehiculo: this.pagoForm.get('tipoVehiculo').value,
-        valorPago: this.pagoForm.get('valorAPagar').value,
-      }
+        valorPago: this.pagoForm.get('valorPago').value,
+      };
       this.pagoServices.modificarPago(this.id, EDIT_PAGO).subscribe(data => {
         console.log(data);
         this.alertPagoActualizado();
         this.router.navigate(['/listar']);
-      })
+      });
 
     } else {
       console.log(PAGO);
-      this.pagoServices.guardarPago(PAGO)
-        .subscribe(data => {
-          this.pago = data;
-        });
-      this.alertPagoCreado()
+      this.pagoServices.guardarPago(PAGO).subscribe(data => {
+        this.pago = data;
+      });
+      this.alertPagoCreado();
       this.construirFormularioPago();
     }
   }
@@ -95,7 +95,7 @@ export class CrearPagoComponent implements OnInit {
       title: 'Pago Exitoso',
       showConfirmButton: false,
       timer: 1000
-    })
+    });
   }
   alertPagoActualizado() {
     Swal.fire({
@@ -104,6 +104,6 @@ export class CrearPagoComponent implements OnInit {
       title: 'Pago Actualizado',
       showConfirmButton: false,
       timer: 1000
-    })
+    });
   }
 }

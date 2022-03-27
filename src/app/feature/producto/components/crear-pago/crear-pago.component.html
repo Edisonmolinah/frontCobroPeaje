@@ -15,7 +15,6 @@
                     class="form-control form-control-lg text-center" formControlName="placa">
                   <div class="text-danger"
                     *ngIf="pagoForm.get('placa')?.hasError('required') && pagoForm.get('placa')?.touched">
-                    <!-- <span>La placa <strong>es obligatoria</strong></span> -->
                   </div>
                 </div>
               </div>
@@ -28,22 +27,20 @@
                     class="form-control form-control-lg text-center" formControlName="tipoVehiculo">
                 </div>
               </div>
-
               <div>
                 <div class="row">
                   <div class="col-sm-2 mt-4">
                     <label>Valor a Pagar:</label>
                   </div>
                   <div class="col-sm-8 mt-4">
-                    <input validar type="input" id="valorAPagar" name="valorAPagar" placeholder="Valor "
-                      class="form-control form-control-lg text-center" formControlName="valorAPagar">
+                    <input validar type="input" id="valorAPagar" name="valorPago" placeholder="Valor "
+                      class="form-control form-control-lg text-center" formControlName="valorPago">
                   </div>
                 </div>
               </div>
               <button type="submit" [disabled]="pagoForm.invalid" id="botonPagar" class="btn btn-success btn-lg float-middle mt-5 m-5">Pagar</button>
-              <button (click)="calcularPago()" id="btnCalcularPago" type="button" 
-                  class="btn btn-warning btn-lg float-middle mt-5 m-5 ">Calcular pago</button>
-              
+              <button (click)="calcularPago()" id="btnCalcularPago" type="button"
+                  class="btn btn-warning btn-lg float-middle mt-5 m-5 ">Calcular pago</button>         
             </div>
           </form>
         </div>

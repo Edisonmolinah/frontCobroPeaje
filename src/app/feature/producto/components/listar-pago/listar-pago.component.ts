@@ -39,9 +39,10 @@ export class ListarPagoComponent implements OnInit {
   }
 
   sumaPagos() {
-    for (let i = 0; i < this.listaPago.length; i++) {
-      this.suma += this.listaPago[i].valorPago;
-    }
-    this.listaForm.get('sumaPagos').setValue(this.suma);
+    const sumWithInitial = this.listaPago.reduce(
+      (previousValue, currentValue) => previousValue + currentValue.valorPago,
+      0
+    );
+    this.listaForm.get('sumaPagos').setValue(sumWithInitial);
   }
 }
